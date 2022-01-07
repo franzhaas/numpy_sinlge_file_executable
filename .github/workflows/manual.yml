@@ -1,7 +1,7 @@
 name: GitHub Actions Demo
 on: [push]
 jobs:
-  exe_llvmlite:
+  exe_numba:
     runs-on: windows-latest
     steps:
       - name: Check out repository code
@@ -25,4 +25,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: archive
-          path: withimportlib/build/x86_64-pc-windows-msvc/debug/exe/examplemini.exe
+          path: build\x86_64-pc-windows-msvc\debug\exe\examplemini.exe 
