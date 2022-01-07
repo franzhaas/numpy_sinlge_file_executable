@@ -1,0 +1,19 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  exe_llvmlite:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2.3.1
+        with:
+            python-version: 3.9
+      - run: python -m pip install git+https://github.com/franzhaas/PyOxidizer.git\#egg=pyoxidizer
+      - run: cd withimportlib; pyoxidizer build exe
+      - name: Archive exe
+        uses: actions/upload-artifact@v2
+        with:
+          name: archive
+          path: withimportlib/build/x86_64-pc-windows-msvc/debug/exe/examplemini.exe
