@@ -16,7 +16,9 @@ jobs:
           default: true
           profile: minimal
           target: x86_64-pc-windows-msvc
-      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git pyoxidizer 
+      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git pyoxidizer
+      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git pyo3
+      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git release
       - run: pyoxidizer build exe
       - name: Archive exe
         uses: actions/upload-artifact@v2
