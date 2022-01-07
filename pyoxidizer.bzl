@@ -28,7 +28,7 @@ def make_exe():
     exe.tcl_files_path = "lib"
     exe.windows_runtime_dlls_mode = "always"
     exe.windows_subsystem = "console"
-    exe.add_python_resources(exe.pip_install(["git+https://github.com/franzhaas/numpy.git#egg=numpy"]))
+    exe.add_python_resources(exe.pip_install(["./numpy.whl"]))
 
     return exe
 

@@ -19,6 +19,8 @@ jobs:
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git pyoxidizer
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git pyo3
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git release
+      - run: pip wheel git+https://github.com/franzhaas/numpy.git#egg=numpy
+      - run: move numpy*.whl numpy.whl
       - run: pyoxidizer build exe
       - name: Archive exe
         uses: actions/upload-artifact@v2
