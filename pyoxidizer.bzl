@@ -51,7 +51,6 @@ def make_msi(exe):
 def register_code_signers():
     return
 
-
 # Call our function to set up automatic code signers.
 register_code_signers()
 
