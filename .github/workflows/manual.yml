@@ -21,6 +21,8 @@ jobs:
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git release
       - run: pip wheel git+https://github.com/franzhaas/numpy.git#egg=numpy
       - run: pyoxidizer build exe
+      - run: pyoxidizer build installer
+      - run: build\x86_64-pc-windows-msvc\debug\exe\examplemini.exe --version
       - name: Archive exe
         uses: actions/upload-artifact@v2
         with:
