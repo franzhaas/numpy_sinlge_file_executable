@@ -7,7 +7,7 @@
 # This function creates a Python executable and installs it in a destination
 # directory.
 def make_exe():
-    dist = default_python_distribution(flavor = "standalone_static")
+    dist = default_python_distribution(flavor = "standalone_dynamic")
     policy = dist.make_python_packaging_policy()
     policy.allow_files = True
     policy.allow_in_memory_shared_library_loading = True
