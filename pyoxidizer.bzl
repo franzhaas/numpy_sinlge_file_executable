@@ -9,9 +9,11 @@
 def make_exe():
     dist = default_python_distribution(flavor = "standalone_dynamic")
     policy = dist.make_python_packaging_policy()
-    policy.allow_files = True
     policy.allow_in_memory_shared_library_loading = True
     policy.resources_location = "in-memory"
+    policy.extension_module_filter = "minimal"
+    policy.bytecode_optimize_level_zero = True
+    policy.include_distribution_sources = False
     python_config = dist.make_python_interpreter_config()
     python_config.config_profile = "python"
     exe = dist.to_python_executable(
