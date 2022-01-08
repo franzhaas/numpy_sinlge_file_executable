@@ -15,7 +15,7 @@ def make_exe():
     python_config = dist.make_python_interpreter_config()
     python_config.config_profile = "python"
     exe = dist.to_python_executable(
-        name="examplemini",
+        name="np_example",
 
         # If no argument passed, the default `PythonPackagingPolicy` for the
         # distribution is used.
@@ -25,14 +25,9 @@ def make_exe():
         config=python_config,
     )
 
-    exe.tcl_files_path = "lib"
-
     exe.windows_runtime_dlls_mode = "always"
-
     exe.windows_subsystem = "console"
-
     exe.add_python_resources(exe.pip_install(["./numpy-1.23.0.dev0+304.g329d60fa3-cp39-cp39-win_amd64.whl"]))
-
     return exe
 
 def make_embedded_resources(exe):
@@ -41,7 +36,6 @@ def make_embedded_resources(exe):
 def make_install(exe):
     files = FileManifest()
     files.add_python_resource(".", exe)
-
     return files
 
 def make_msi(exe):
