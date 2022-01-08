@@ -7,13 +7,11 @@
 # This function creates a Python executable and installs it in a destination
 # directory.
 def make_exe():
-    dist = default_python_distribution(flavor = "standalone_dynamic")
+    dist = default_python_distribution(flavor = "standalone_static")
     policy = dist.make_python_packaging_policy()
+    policy.allow_files = True
     policy.allow_in_memory_shared_library_loading = True
     policy.resources_location = "in-memory"
-    policy.extension_module_filter = "minimal"
-    policy.bytecode_optimize_level_zero = True
-    policy.include_distribution_sources = False
     python_config = dist.make_python_interpreter_config()
     python_config.config_profile = "python"
     exe = dist.to_python_executable(
@@ -28,8 +26,11 @@ def make_exe():
     )
 
     exe.tcl_files_path = "lib"
+
     exe.windows_runtime_dlls_mode = "always"
+
     exe.windows_subsystem = "console"
+
     exe.add_python_resources(exe.pip_install(["./numpy-1.23.0.dev0+304.g329d60fa3-cp39-cp39-win_amd64.whl"]))
 
     return exe
