@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   exe_numpy:
     runs-on: windows-latest
