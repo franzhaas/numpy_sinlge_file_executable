@@ -19,7 +19,8 @@ jobs:
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxidizer
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxy
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr release
-      - run: pip wheel git+https://github.com/franzhaas/numpy.git#egg=numpy
+      - run: pip install wheel
+      - run: pip wheel -w . .
       - run: pyoxidizer build exe
       - name: Archive exe
         uses: actions/upload-artifact@v2
