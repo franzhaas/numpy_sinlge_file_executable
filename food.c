@@ -12,11 +12,7 @@ static PyModuleDef spam_def = {
     PyDoc_STR("Utilities for cooking spam"),    /* m_doc */
     0,                                          /* m_size */
     NULL,                                       /* m_methods */
-#ifdef Py_mod_exec
-    spam_slots,                                 /* m_slots */
-#else
     NULL,
-#endif
     NULL,                                       /* m_traverse */
     NULL,                                       /* m_clear */
     NULL,                                       /* m_free */
