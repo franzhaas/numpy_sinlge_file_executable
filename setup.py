@@ -11,7 +11,7 @@ from distutils.core import setup, Extension
 module1 = Extension('spam_no_extra_incref',
                     sources = ['food2.c'])
 
-module2 = Extension('spam_extra_incref',
+module2 = Extension('spam_single_phase',
                     sources = ['food.c'])
 
 

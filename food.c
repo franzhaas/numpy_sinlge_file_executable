@@ -5,12 +5,6 @@ static int spam_exec(PyObject *module) {
     return 0;
 }
 
-#ifdef Py_mod_exec
-static PyModuleDef_Slot spam_slots[] = {
-    {Py_mod_exec, spam_exec},
-    {0, NULL}
-};
-#endif
 
 static PyModuleDef spam_def = {
     PyModuleDef_HEAD_INIT,                      /* m_base */
@@ -29,13 +23,7 @@ static PyModuleDef spam_def = {
 };
 
 PyMODINIT_FUNC
-PyInit_spam_extra_incref(void) {
-#ifdef Py_mod_exec
-    PyObject *module;
-    module =  PyModuleDef_Init(&spam_def);
-    Py_INCREF(module);
-    return module;
-#else
+PyInit_spam_single_phase(void) {
     PyObject *module;
     module = PyModule_Create(&spam_def);
     if (module == NULL) return NULL;
@@ -44,5 +32,4 @@ PyInit_spam_extra_incref(void) {
         return NULL;
     }
     return module;
-#endif
 }
