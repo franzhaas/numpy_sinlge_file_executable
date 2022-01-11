@@ -19,10 +19,10 @@ jobs:
       - run: pip install wheel
       - run: pip wheel -w . .
       - run: pip wheel git+https://github.com/franzhaas/numpy.git#egg=numpy
-      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxidizer
-      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxy
-      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr release
-      - run: pyoxidizer build exe
+      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch enable_multiphase_initialisation_using_incref pyoxidizer
+      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch enable_multiphase_initialisation_using_incref pyoxy
+      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch enable_multiphase_initialisation_using_incref release
+      - run: pyoxidizer build install
       - name: Archive exe
         uses: actions/upload-artifact@v2
         with:
