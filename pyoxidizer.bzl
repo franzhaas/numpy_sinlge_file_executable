@@ -28,7 +28,7 @@ def make_exe():
 
     exe.windows_runtime_dlls_mode = "always"
     exe.windows_subsystem = "console"
-    exe.add_python_resources(exe.pip_install(glob(["./*.whl"], strip_prefix="D:/a/numpy_sinlge_file_executable/numpy_sinlge_file_executable/./")))
+    exe.add_python_resources(exe.pip_install(["./numpy-1.23.0.dev0+309.ga810a6af4-cp39-cp39-win_amd64.whl"]))
     return exe
 
 def make_embedded_resources(exe):
