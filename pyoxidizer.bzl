@@ -249,7 +249,7 @@ def make_exe():
     # policy's resource location attributes.
     #exe.add_python_resources(exe.pip_download(["pyflakes==2.2.0"]))
 
-    exe.add_python_resources(exe.pip_install(["./numpy-1.23.0.dev0+304.g329d60fa3-cp39-cp39-win_amd64.whl", "pytest", "hypothesis"]))
+    exe.add_python_resources(exe.pip_install(["./numpy", "pytest", "hypothesis"]))
 
 
     # Invoke `pip install` with our Python distribution to install a single package.
