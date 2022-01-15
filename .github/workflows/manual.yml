@@ -16,9 +16,9 @@ jobs:
           default: true
           profile: minimal
           target: x86_64-pc-windows-msvc
+      - run: git clone https://github.com/franzhaas/numpy.git
       - run: pip install wheel
       - run: pip wheel -w . .
-      - run: git clone git+https://github.com/franzhaas/numpy.git
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch enable_multiphase_initialisation_using_incref pyoxidizer
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch enable_multiphase_initialisation_using_incref pyoxy
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch enable_multiphase_initialisation_using_incref release
