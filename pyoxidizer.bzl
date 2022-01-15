@@ -4,7 +4,7 @@
 # configuration file format.
 
 def resource_callback(policy, resource):
-    if "pytest" in resource.name or "pluggy" in resource.name or "py" == resource.name or "py." == resource.name[0:3]:
+    if "test" in resource.name or "pluggy" in resource.name or "py" == resource.name or "py." == resource.name[0:3]:
         resource.add_location = "filesystem-relative:lib"
     else:
         resource.add_location = "in-memory"
