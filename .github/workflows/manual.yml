@@ -23,7 +23,7 @@ jobs:
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch enable_multiphase_initialisation_using_incref pyoxy
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch enable_multiphase_initialisation_using_incref release
       - run: pyoxidizer build install
-      - run: cd numpy_sinlge_file_executable/build/x86_64-pc-windows-msvc/debug/install & numpy_pytest.exe -c "import numpy; numpy.test(extra_argv=['--assert=plain'])"
+      - run: numpy_sinlge_file_executable\build\x86_64-pc-windows-msvc\debug\install\numpy_pytest.exe -c "import numpy; numpy.test(extra_argv=['--assert=plain'])"
       - name: Archive exe
         uses: actions/upload-artifact@v2
         with:
