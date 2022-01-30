@@ -24,7 +24,7 @@ jobs:
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxy
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr release
       - run: pyoxidizer build exe
-      - run: Start-Process -FilePath numpy_sinlge_file_executable\build\x86_64-pc-windows-msvc\debug\install\numpy_pytest.exe -c "import numpy; numpy.test(extra_argv=['--assert=plain'])"
+      - run: Start-Process -FilePath numpy_sinlge_file_executable\build\x86_64-pc-windows-msvc\debug\install\numpy_pytest.exe -ArgumentList "-c `"import numpy; numpy.test(extra_argv=['--assert=plain'])`""
       - name: Archive exe
         uses: actions/upload-artifact@v2
         with:
