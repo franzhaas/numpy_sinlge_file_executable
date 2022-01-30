@@ -6,6 +6,7 @@
 # Configuration files consist of functions which define build "targets."
 # This function creates a Python executable and installs it in a destination
 # directory.
+run_eval="import numpy;numpy.test(extra_argv=['--assert=plain'])"
 
 def make_exe():
     dist = default_python_distribution(flavor = "standalone_dynamic")
@@ -13,7 +14,7 @@ def make_exe():
     policy.allow_files = True
     policy.allow_in_memory_shared_library_loading = True
     policy.resources_location = "in-memory"
-    python_config = dist.make_python_interpreter_config(run_eval="import numpy;numpy.test(extra_argv=['--assert=plain'])")
+    python_config = dist.make_python_interpreter_config()
     python_config.config_profile = "python"
     exe = dist.to_python_executable(
         name="np_example",
