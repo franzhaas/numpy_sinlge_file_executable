@@ -13,7 +13,7 @@ def make_exe():
     policy.allow_files = True
     policy.allow_in_memory_shared_library_loading = True
     policy.resources_location = "in-memory"
-    python_config = dist.make_python_interpreter_config(run_eval="import numpy;numpy.test(extra_argv=['--assert=plain'])",)
+    python_config = dist.make_python_interpreter_config(run_eval="import numpy;numpy.test(extra_argv=['--assert=plain'])")
     python_config.config_profile = "python"
     exe = dist.to_python_executable(
         name="np_example",
@@ -28,7 +28,7 @@ def make_exe():
 
     exe.windows_runtime_dlls_mode = "always"
     exe.windows_subsystem = "console"
-    exe.add_python_resources(exe.pip_install(["./numpy-1.23.0.dev0+313.gf5dedaa30-cp39-cp39-win_amd64.whl"]))
+    exe.add_python_resources(exe.pip_install(["git+https://github.com/franzhaas/numpy.git@numpy"]))
     return exe
 
 def make_embedded_resources(exe):
