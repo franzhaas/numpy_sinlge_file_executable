@@ -15,7 +15,7 @@ def make_exe():
     policy.resources_location = "in-memory"
     python_config = dist.make_python_interpreter_config()
     python_config.config_profile = "python"
-    python_config.run_eval="import numpy;numpy.test(extra_argv=['--assert=plain'])"
+    python_config.run_command = "import numpy;numpy.test(extra_argv=['--assert=plain'])"
 
     exe = dist.to_python_executable(
         name="np_example",
