@@ -9,7 +9,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v2.3.1
         with:
-            python-version: 3.9.7
+            python-version: 3.9.9
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
@@ -18,7 +18,8 @@ jobs:
           target: x86_64-pc-windows-msvc
       - run: pip install wheel
       - run: pip wheel -w . .
-      - run: pip wheel git+https://github.com/franzhaas/numpy.git#egg=numpy
+      - run: pip wheel -w . git+https://github.com/franzhaas/numpy.git#egg=numpy
+      - run dir
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxidizer
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxy
       - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr release
