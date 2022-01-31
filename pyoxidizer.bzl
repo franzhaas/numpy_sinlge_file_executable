@@ -7,12 +7,22 @@
 # This function creates a Python executable and installs it in a destination
 # directory.
 
+
+def resource_callback(policy, resource):
+    if type(resource) in ("PythonExtensionModule") or "pytest" in resource.name or "pluggy" in resource.name or "py" == resource.name or "py." == resource.name[0:3] or "test" in resource.name:
+        resource.add_location = "filesystem-relative:lib"
+    else:
+        resource.add_location = "in-memory"
+
+
 def make_exe():
     dist = default_python_distribution(flavor = "standalone_dynamic")
     policy = dist.make_python_packaging_policy()
     policy.allow_files = True
     policy.allow_in_memory_shared_library_loading = True
     policy.resources_location = "in-memory"
+    policy.resources_location_fallback = "filesystem-relative:lib"
+    policy.register_resource_callback(resource_callback)
     python_config = dist.make_python_interpreter_config()
     python_config.config_profile = "python"
     python_config.run_command = "import numpy;numpy.test(extra_argv=['--assert=plain'])"
@@ -30,7 +40,7 @@ def make_exe():
 
     exe.windows_runtime_dlls_mode = "always"
     exe.windows_subsystem = "console"
-    exe.add_python_resources(exe.pip_install(["git+https://github.com/franzhaas/numpy.git@numpy"]))
+    exe.add_python_resources(exe.pip_install(["git+https://github.com/franzhaas/numpy.git@numpy", "pytest", "hypothesis"]))
     return exe
 
 def make_embedded_resources(exe):
