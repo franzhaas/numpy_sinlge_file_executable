@@ -16,9 +16,9 @@ jobs:
           default: true
           profile: minimal
           target: x86_64-pc-windows-msvc
-      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxidizer
-      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr pyoxy
-      - run: cargo install --git https://github.com/franzhaas/PyOxidizer.git --branch franzhaas-borrowed_ptr release
+      - run: cargo install --git https://github.com/indygreg/PyOxidizer.git pyoxidizer
+      - run: cargo install --git https://github.com/indygreg/PyOxidizer.git pyoxy
+      - run: cargo install --git https://github.com/indygreg/PyOxidizer.git release
       - run: pyoxidizer build exe
       - run: pyoxidizer run
 
