@@ -19,10 +19,11 @@ jobs:
       - run: cargo install --git https://github.com/indygreg/PyOxidizer.git pyoxidizer
       - run: cargo install --git https://github.com/indygreg/PyOxidizer.git pyoxy
       - run: cargo install --git https://github.com/indygreg/PyOxidizer.git release
+      - run: pyoxidizer build installer
       - run: pyoxidizer build exe
       - name: Archive exe
         uses: actions/upload-artifact@v2
         with:
            name: archive
-           path: build\x86_64-pc-windows-msvc\debug\*
+           path: build\*
 
